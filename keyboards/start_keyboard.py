@@ -9,8 +9,8 @@ def get_start_keyboard():
     return keyboard
 
 def get_start_inline_keyboard():
-    premiers_button = InlineKeyboardButton(text="⭐ Премьеры", callback_data='data')
-    search_button = InlineKeyboardButton(text="🔍 Поиск", callback_data='data')
+    premiers_button = InlineKeyboardButton(text="⭐ Премьеры", callback_data='premieres')
+    search_button = InlineKeyboardButton(text="🔍 Поиск", callback_data='search')
     inline_row = [premiers_button, search_button]
     inline_keyboard=InlineKeyboardMarkup(inline_keyboard=[inline_row])
     return inline_keyboard

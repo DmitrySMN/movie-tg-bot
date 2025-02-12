@@ -1,6 +1,6 @@
 from aiogram import types, Router, F
 from aiogram.utils import markdown
-from aiogram.filters import CommandStart
+from aiogram.filters import CommandStart, Command
 from keyboards.start_keyboard import *
 
 router = Router()
@@ -19,3 +19,7 @@ async def handle_start(message: types.Message):
         caption= f'{markdown.bold('🎥Все что вы хотели знать о кинемотографе')}',
         reply_markup=get_start_inline_keyboard(),
         )
+    
+# @router.message(Command('premiers'))
+# async def handle_premiers(message: types.Message):
+#     await message.answer(text='Премьеры')
