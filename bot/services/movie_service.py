@@ -13,3 +13,5 @@ class MovieService:
                     'X-API-KEY': os.getenv('KINOPOISK_API_TOKEN')})
         return response.json()
 
+# get names from json
+# print(list(map(lambda x: x['nameRu'], MovieService.getPremierMovies('JUNE', 2021)['items'])))

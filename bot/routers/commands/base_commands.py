@@ -20,6 +20,6 @@ async def handle_start(message: types.Message):
         reply_markup=get_start_inline_keyboard(),
         )
     
-# @router.message(Command('premiers'))
+# @router.message(F.text == "Премьеры")
 # async def handle_premiers(message: types.Message):
-#     await message.answer(text='Премьеры')
+#     await message.answer(text='Премьеры//////')
