@@ -1,9 +1,8 @@
-
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
-from ..services.movie_service import MovieService 
+
+from bot.services.movie_service import MovieService
 
 def get_premiere_keyboard():
-    print(list(map(lambda x: x['nameRu'], MovieService.getPremierMovies('JUNE', 2021)['items'])))
-
-
-get_premiere_keyboard()
+    premier_buttons = list(map(lambda x: InlineKeyboardButton(text=x['nameRu'], callback_data='premier-movie-button'), MovieService.getPremierMovies('JUNE', 2021)['items']))
+    print(premier_buttons)
+    return InlineKeyboardMarkup(inline_keyboard=[premier_buttons])

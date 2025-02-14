@@ -4,7 +4,7 @@ from aiogram import Bot, Dispatcher
 from aiogram.fsm.storage.memory import MemoryStorage
 from aiogram.enums import ParseMode
 from aiogram.client.bot import DefaultBotProperties
-from routers import router
+from bot.routers import router
 
 load_dotenv()
 

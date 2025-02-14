@@ -1,7 +1,7 @@
 import requests, os
 from dotenv import load_dotenv
 
-load_dotenv(dotenv_path='../.env')
+load_dotenv(dotenv_path='../../.env')
 
 class MovieService:
 
@@ -13,5 +13,3 @@ class MovieService:
                     'X-API-KEY': os.getenv('KINOPOISK_API_TOKEN')})
         return response.json()
 
-# get names from json
-# print(list(map(lambda x: x['nameRu'], MovieService.getPremierMovies('JUNE', 2021)['items'])))
