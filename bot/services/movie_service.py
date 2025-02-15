@@ -6,7 +6,7 @@ load_dotenv(dotenv_path='../../.env')
 class MovieService:
 
     @staticmethod
-    def getPremierMovies(month: str, year: int) -> dict:
+    def get_premier_movies(month: str, year: int) -> dict:
         response = requests.get(
             url=f'https://kinopoiskapiunofficial.tech/api/v2.2/films/premieres?year={year}&month={month}',
             headers={'accept': 'application/json',
