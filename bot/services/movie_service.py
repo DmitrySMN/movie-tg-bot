@@ -13,3 +13,10 @@ class MovieService:
                     'X-API-KEY': os.getenv('KINOPOISK_API_TOKEN')})
         return response.json()
 
+    @staticmethod
+    def get_movie_by_id(id: int) -> dict:
+        response = requests.get(
+            url=f'https://kinopoiskapiunofficial.tech/api/v2.2/films/{id}',
+            headers={'accept': 'application/json',
+                    'X-API-KEY': os.getenv('KINOPOISK_API_TOKEN')})
+        return response.json()
