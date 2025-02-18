@@ -16,7 +16,7 @@ router = Router()
 async def handle_start(message: types.Message):
     await message.answer_photo(
         photo = 'https://i.pinimg.com/736x/20/43/f8/2043f8e7fe36c0c7fec8ecd5304724dc.jpg',
-        caption= f'{markdown.bold('🎥Все что вы хотели знать о кинемотографе')}',
+        caption = markdown.bold('🎦 Все что вы хотели знать о кинемотографе'),
         reply_markup=get_start_inline_keyboard(),
         )
     
