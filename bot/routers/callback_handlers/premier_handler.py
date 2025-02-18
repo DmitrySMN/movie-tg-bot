@@ -4,7 +4,7 @@ from aiogram.utils import markdown
 from bot.keyboards.movie_keyboard import get_movie_keyboard
 from bot.services.movie_service import MovieService
 from bot.keyboards.premiere_keyboard import get_premiere_keyboard
-from bot.templates.messages.movie_message import get_movie_message
+from bot.templates.messages.base_messages import get_movie_message
 
 router = Router()
 

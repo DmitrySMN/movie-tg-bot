@@ -2,7 +2,7 @@ from aiogram import types, Router, F
 from aiogram.utils import markdown
 from aiogram.filters import CommandStart, Command
 from bot.keyboards.start_keyboard import *
-from bot.templates.messages.start_message import get_start_message
+from bot.templates.messages.base_messages import get_start_message
 
 router = Router()
 # premiers_button = InlineKeyboardButton(text="Список премьер", callback_data='callback')

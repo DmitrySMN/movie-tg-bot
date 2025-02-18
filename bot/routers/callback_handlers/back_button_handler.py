@@ -1,7 +1,7 @@
 from aiogram import Router, F
 from aiogram.types import CallbackQuery, InputMediaPhoto
 from bot.keyboards.start_keyboard import get_start_inline_keyboard
-from bot.templates.messages.start_message import get_start_message
+from bot.templates.messages.base_messages import get_start_message
 
 router = Router()
 
