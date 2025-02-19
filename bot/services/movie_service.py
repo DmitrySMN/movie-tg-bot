@@ -20,3 +20,11 @@ class MovieService:
             headers={'accept': 'application/json',
                     'X-API-KEY': os.getenv('KINOPOISK_API_TOKEN')})
         return response.json()
+    
+    @staticmethod
+    def get_sorted_movies() -> dict:
+        response = requests.get(
+            url=f'https://kinopoiskapiunofficial.tech/api/v2.2/films?order=NUM_VOTE&type=FILM&ratingFrom=0&ratingTo=10&yearFrom=1000&yearTo=3000&page=1',
+            headers={'accept': 'application/json',
+                    'X-API-KEY': os.getenv('KINOPOISK_API_TOKEN')})
+        return response.json()
