@@ -5,12 +5,6 @@ from bot.keyboards.start_keyboard import *
 from bot.templates.messages.base_messages import get_start_message
 
 router = Router()
-# premiers_button = InlineKeyboardButton(text="Список премьер", callback_data='callback')
-
-# favorites_button = InlineKeyboardButton(text="Избранные фильмы", callback_data='callback')
-
-# keyboard = InlineKeyboardMarkup().add(premiers_button, favorites_button)
-
 
 @router.message(F.text == "🏠 На главную")
 @router.message(CommandStart())
@@ -20,7 +14,12 @@ async def handle_start(message: types.Message):
         caption = get_start_message(),
         reply_markup=get_start_inline_keyboard(),
         )
-    
+
+@router.message(F.text.startswith('inlinequery'))
+async def handle_premiers(message: types.Message):
+    await message.bot.send_message(chat_id=message.chat.id, text="Movie details")
+    await message.bot.delete_message(chat_id=message.chat.id, message_id=message.message_id)
+
 @router.message()
 async def handle_premiers(message: types.Message):
     await message.bot.delete_message(chat_id=message.chat.id, message_id=message.message_id)
