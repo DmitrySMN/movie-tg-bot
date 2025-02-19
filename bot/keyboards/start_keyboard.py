@@ -1,4 +1,4 @@
-from aiogram.types import KeyboardButton, ReplyKeyboardMarkup, InlineKeyboardMarkup, InlineKeyboardButton
+from aiogram.types import KeyboardButton, ReplyKeyboardMarkup, InlineKeyboardMarkup, InlineKeyboardButton, SwitchInlineQueryChosenChat
 
 
 def get_start_keyboard():
@@ -10,7 +10,7 @@ def get_start_keyboard():
 
 def get_start_inline_keyboard():
     premiers_button = InlineKeyboardButton(text="⭐ Премьеры", callback_data='premieres')
-    search_button = InlineKeyboardButton(text="🔍 Поиск", callback_data='search')
+    search_button = InlineKeyboardButton(text="🔍 Поиск", switch_inline_query_current_chat="")
     inline_row = [premiers_button, search_button]
     inline_keyboard=InlineKeyboardMarkup(inline_keyboard=[inline_row])
     return inline_keyboard

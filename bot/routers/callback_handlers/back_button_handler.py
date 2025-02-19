@@ -13,13 +13,9 @@ async def handle_premiers_callback(callback: CallbackQuery):
 
 @router.callback_query(F.data.startswith("back-button"))
 async def handle_back_button_callback(callback: CallbackQuery):
-    # media = InputMediaPhoto(media='https://i.pinimg.com/736x/20/43/f8/2043f8e7fe36c0c7fec8ecd5304724dc.jpg', caption=get_start_message())
-    # await callback.bot.edit_message_media(media=media, chat_id=callback.message.chat.id, message_id=callback.message.message_id, reply_markup=get_start_inline_keyboard())
     await callback.answer(text="Back", show_alert=True)
 
 
 @router.callback_query(F.data.startswith("favorite-button"))
 async def handle_favorite_button_callback(callback: CallbackQuery):
-    # media = InputMediaPhoto(media='https://i.pinimg.com/736x/20/43/f8/2043f8e7fe36c0c7fec8ecd5304724dc.jpg', caption=get_start_message())
-    # await callback.bot.edit_message_media(media=media, chat_id=callback.message.chat.id, message_id=callback.message.message_id, reply_markup=get_start_inline_keyboard())
     await callback.answer(text="Фильм добавлен в избранное", show_alert=True)
