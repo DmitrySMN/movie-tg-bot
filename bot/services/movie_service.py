@@ -28,3 +28,11 @@ class MovieService:
             headers={'accept': 'application/json',
                     'X-API-KEY': os.getenv('KINOPOISK_API_TOKEN')})
         return response.json()
+    
+    @staticmethod
+    def get_movie_by_title(title: str) -> dict:
+        response = requests.get(
+            url=f'https://kinopoiskapiunofficial.tech/api/v2.1/films/search-by-keyword?keyword={title}&page=1',
+            headers={'accept': 'application/json',
+                    'X-API-KEY': os.getenv('KINOPOISK_API_TOKEN')})
+        return response.json()
