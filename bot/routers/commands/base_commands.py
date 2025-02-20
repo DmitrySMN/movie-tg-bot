@@ -16,6 +16,8 @@ async def handle_start(message: types.Message):
         caption = get_start_message(),
         reply_markup=get_start_inline_keyboard(),
         )
+    await message.bot.delete_message(chat_id=message.chat.id, message_id=message.message_id)
+
 
 @router.message(F.text.startswith('inlinequery'))
 async def handle_premiers(message: types.Message):
@@ -27,3 +29,4 @@ async def handle_premiers(message: types.Message):
 @router.message()
 async def handle_premiers(message: types.Message):
     await message.bot.delete_message(chat_id=message.chat.id, message_id=message.message_id)
+    
