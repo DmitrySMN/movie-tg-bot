@@ -21,7 +21,7 @@ async def handle_start(message: types.Message):
 async def handle_premiers(message: types.Message):
     movie_id=message.text.split(':')[1]
     movie = MovieService.get_movie_by_id(movie_id)
-    await message.bot.send_photo(chat_id=message.chat.id, photo=movie['posterUrl'], caption=get_movie_message(name=movie['nameRu'], year=movie['year'], genres=movie['genres'], rating=movie['ratingKinopoisk'], description=movie['description']), reply_markup=get_movie_keyboard())
+    await message.bot.send_photo(chat_id=message.chat.id, photo=movie['posterUrl'], caption=get_movie_message(name=movie['nameRu'], year=movie['year'], genres=movie['genres'], rating=movie['ratingKinopoisk'], description=movie['description']), reply_markup=get_movie_keyboard(movie_id=movie_id))
     await message.bot.delete_message(chat_id=message.chat.id, message_id=message.message_id)
 
 @router.message()
