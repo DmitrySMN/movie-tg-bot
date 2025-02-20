@@ -11,6 +11,6 @@ def get_start_keyboard():
 def get_start_inline_keyboard():
     premiers_button = InlineKeyboardButton(text="⭐ Премьеры", callback_data='premieres')
     search_button = InlineKeyboardButton(text="🔍 Поиск", switch_inline_query_current_chat="")
-    inline_row = [premiers_button, search_button]
-    inline_keyboard=InlineKeyboardMarkup(inline_keyboard=[inline_row])
+    favorites_button = InlineKeyboardButton(text="💜 Избранное", callback_data='favorites')
+    inline_keyboard=InlineKeyboardMarkup(inline_keyboard=[[premiers_button, search_button], [favorites_button]])
     return inline_keyboard

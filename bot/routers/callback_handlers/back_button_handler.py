@@ -15,7 +15,3 @@ async def handle_premiers_callback(callback: CallbackQuery):
 async def handle_back_button_callback(callback: CallbackQuery):
     await callback.answer(text="Back", show_alert=True)
 
-
-@router.callback_query(F.data.startswith("favorite-button"))
-async def handle_favorite_button_callback(callback: CallbackQuery):
-    await callback.answer(text="Фильм добавлен в избранное", show_alert=True)
