@@ -1,34 +1,25 @@
 import os
 from aiogram import types, Router, F
 from aiogram.filters import CommandStart, Command
-from dotenv import load_dotenv
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
+from bot.crud import *
 from bot.keyboards.movie_keyboard import get_movie_keyboard
 from bot.keyboards.start_keyboard import *
 from bot.models.users import Users
 from bot.templates.messages.base_messages import *
 from bot.services.movie_service import MovieService
+from bot.config import Session
 
 router = Router()
 
-load_dotenv(dotenv_path='../../../.env')
-
-engine = create_engine(os.getenv('DATABASE_URI'))
-
-Session = sessionmaker(bind=engine)
 session = Session()
 
 @router.message(F.text == "🏠 На главную")
 @router.message(CommandStart())
 async def handle_start(message: types.Message):
     try:
-        user = session.query(Users).filter(Users.username == message.from_user.username).first()
+        user = get_user_by_username(session, message.from_user.username)
         if user is None:
-            new_user = Users(username=message.from_user.username, favorites=[])
-            session.add(new_user)
-            session.commit()
-            session.close()
+            create_user(session, message.from_user.username)
     except BaseException as err:
         print(err)
     finally:
