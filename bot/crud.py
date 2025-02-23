@@ -1,5 +1,7 @@
+from sqlalchemy import update
 from sqlalchemy.orm import Session 
 from bot.models.users import Users
+from sqlalchemy.orm.attributes import flag_modified
 
 def create_user(session: Session, username: str) -> None:
     new_user = Users(username=username, favorites=[])
@@ -17,4 +19,6 @@ def get_user_favorites(session: Session, username: str):
 def update_user_favorites(session: Session, username: str, film_id: int) -> None:
     user = session.query(Users).filter(Users.username == username).first()
     user.favorites.append(film_id)
-    session.commit()
+    flag_modified(user, "favorites")
+    session.add(user)
+    

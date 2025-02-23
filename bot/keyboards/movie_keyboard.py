@@ -14,4 +14,5 @@ def get_movie_keyboard(movie_id: int | None = None) -> InlineKeyboardMarkup:
 def get_list_movie_keyboard(list_of_id: list[int]) -> InlineKeyboardMarkup:
     movies = list(map(lambda i: MovieService.get_movie_by_id(i), list_of_id))
     movie_buttons = list(map(lambda m: InlineKeyboardButton(text=m['nameRu'], callback_data=f'premier-movie-button:{m['kinopoiskId']}'), movies))
+    movie_buttons.append(InlineKeyboardButton(text="↪️ Назад", callback_data="back-start-button"))
     return InlineKeyboardMarkup(inline_keyboard=[[b] for b in movie_buttons])
