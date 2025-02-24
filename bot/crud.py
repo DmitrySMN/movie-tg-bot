@@ -20,5 +20,6 @@ def update_user_favorites(session: Session, username: str, film_id: int) -> None
     user = session.query(Users).filter(Users.username == username).first()
     user.favorites.append(film_id)
     flag_modified(user, "favorites")
-    session.add(user)
+    session.commit()
+    
     

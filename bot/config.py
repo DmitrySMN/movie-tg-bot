@@ -4,7 +4,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
 
-load_dotenv(dotenv_path='../.env')
+load_dotenv()
 
 engine = create_engine(os.getenv('DATABASE_URI'))
 

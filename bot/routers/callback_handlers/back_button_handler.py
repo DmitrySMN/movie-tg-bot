@@ -11,7 +11,7 @@ async def handle_premiers_callback(callback: CallbackQuery):
     await callback.bot.edit_message_media(media=media, chat_id=callback.message.chat.id, message_id=callback.message.message_id, reply_markup=get_start_inline_keyboard())
     await callback.answer()
 
-@router.callback_query(F.data.startswith("back-button"))
+@router.callback_query(F.data.startswith("all-movie-button"))
 async def handle_back_button_callback(callback: CallbackQuery):
-    await callback.answer(text="Back", show_alert=True)
+    await callback.answer(text="All movies", show_alert=True)
 
