@@ -1,7 +1,10 @@
 from aiogram import Router, F
 from aiogram.types import CallbackQuery, InputMediaPhoto
+from bot.keyboards.movie_keyboard import get_list_movie_keyboard
+from bot.keyboards.pagination_keyboard import get_pagination_keyboard
 from bot.keyboards.start_keyboard import get_start_inline_keyboard
-from bot.templates.messages.base_messages import get_start_message
+from bot.services.movie_service import MovieService
+from bot.templates.messages.base_messages import *
 
 router = Router()
 
@@ -13,5 +16,8 @@ async def handle_premiers_callback(callback: CallbackQuery):
 
 @router.callback_query(F.data.startswith("all-movie-button"))
 async def handle_back_button_callback(callback: CallbackQuery):
-    await callback.answer(text="All movies", show_alert=True)
+    movies = MovieService.get_sorted_movies()
+    print(movies)
+    media = InputMediaPhoto(media='https://payload.cargocollective.com/1/11/367710/13568488/CINEMA-CLASSICS-POSTER_RUTGERS_1340_c.jpg', caption=get_all_movies_message())
+    await callback.bot.edit_message_media(media=media, chat_id=callback.message.chat.id, message_id=callback.message.message_id, reply_markup=get_pagination_keyboard(20))
 
