@@ -13,6 +13,6 @@ def get_start_inline_keyboard():
     search_button = InlineKeyboardButton(text="🔍 Поиск", switch_inline_query_current_chat="")
     favorites_button = InlineKeyboardButton(text="💜 Избранное", callback_data='favorites')
     recommendation_button = InlineKeyboardButton(text="🚩 Рекомендации", callback_data='recommendation-button')
-    all_movie_button = InlineKeyboardButton(text="📁 Все фильмы", callback_data='all-movie-button')
+    all_movie_button = InlineKeyboardButton(text="📁 Популярные фильмы", callback_data='all-movie-button')
     inline_keyboard=InlineKeyboardMarkup(inline_keyboard=[[premiers_button, search_button], [favorites_button, recommendation_button], [all_movie_button]])
     return inline_keyboard
