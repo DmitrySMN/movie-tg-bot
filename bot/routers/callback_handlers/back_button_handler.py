@@ -17,9 +17,9 @@ async def handle_premiers_callback(callback: CallbackQuery):
 
 @router.callback_query(F.data.startswith("all-movie-button"))
 async def handle_back_button_callback(callback: CallbackQuery):
-    movies = MovieService.get_sorted_movies()['items']
+    movies_id = list(map(lambda m: m['kinopoiskId'] ,MovieService.get_sorted_movies()['items']))
     builder = InlineKeyboardBuilder(get_pagination_markup(20))
     # builder.add()
     media = InputMediaPhoto(media='https://payload.cargocollective.com/1/11/367710/13568488/CINEMA-CLASSICS-POSTER_RUTGERS_1340_c.jpg', caption=get_all_movies_message())
-    await callback.bot.edit_message_media(media=media, chat_id=callback.message.chat.id, message_id=callback.message.message_id, reply_markup=builder.as_markup())
+    await callback.bot.edit_message_media(media=media, chat_id=callback.message.chat.id, message_id=callback.message.message_id, reply_markup=get_list_movie_keyboard(movies_id))
 
