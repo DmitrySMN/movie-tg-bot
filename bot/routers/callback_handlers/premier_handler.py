@@ -21,5 +21,5 @@ async def handle_premiere_button_click(callback: CallbackQuery):
         caption=get_movie_message(movie['nameRu'], movie['year'], movie['genres'], movie['ratingKinopoisk'], movie['description'])),
                                           chat_id=callback.message.chat.id,
                                           message_id=callback.message.message_id,
-                                          reply_markup=get_movie_keyboard(movie_id=movie['kinopoiskId']))
+                                          reply_markup=get_movie_keyboard(movie_id=movie['kinopoiskId'], movie_title=movie['nameOriginal']))
     await callback.answer()

@@ -36,3 +36,9 @@ class MovieService:
             headers={'accept': 'application/json',
                     'X-API-KEY': os.getenv('KINOPOISK_API_TOKEN')})
         return response.json()
+
+    @staticmethod
+    def get_similar_movies(title: str) -> dict:
+        response = requests.get(
+            url=f'http://127.0.0.1:8000/recommendation/{title}')
+        return response.json()
