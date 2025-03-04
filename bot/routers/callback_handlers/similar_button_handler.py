@@ -8,7 +8,8 @@ router = Router()
 @router.callback_query(F.data.startswith("similar-button"))
 async def similar_button_handler(callback: CallbackQuery):
     movie_title = callback.data.split(':')[1]
-    similar_movies = MovieService.get_similar_movies(movie_title)['items']
+    movie_year = int(callback.data.split(':')[2])
+    similar_movies = MovieService.get_similar_movies(movie_title, movie_year)['result']
     similar_movie_buttons = list(map(lambda m: InlineKeyboardButton(text=m['movie_name'], callback_data='similar-movie-button'), similar_movies))
     similar_movie_buttons.append(InlineKeyboardButton(text="↪️ Назад", callback_data=f'markup-back-button'))
     await callback.bot.edit_message_reply_markup(chat_id=callback.message.chat.id,

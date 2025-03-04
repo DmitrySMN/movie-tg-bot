@@ -2,10 +2,10 @@ from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
 from bot.services.movie_service import MovieService
 
-def get_movie_keyboard(movie_id: int | None = None, movie_title: str | None = None) -> InlineKeyboardMarkup:
+def get_movie_keyboard(movie_id: int | None = None, movie_title: str | None = None, movie_year: int | None = None) -> InlineKeyboardMarkup:
     back_button = InlineKeyboardButton(text="↪️ Популярные фильмы", callback_data='all-movie-button')
     favorite_button = InlineKeyboardButton(text="💙 В избранное", callback_data=f'add-favorite-button:{movie_id}')
-    similar_button = InlineKeyboardButton(text="🎲 Похожие", callback_data=f"similar-button:{movie_title}")
+    similar_button = InlineKeyboardButton(text="🎲 Похожие", callback_data=f"similar-button:{movie_title}:{movie_year}")
     back_button_row = [back_button]
     favorite_button_row = [favorite_button]
     similar_button_row = [similar_button]
