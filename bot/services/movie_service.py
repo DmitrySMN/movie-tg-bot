@@ -38,7 +38,7 @@ class MovieService:
         return response.json()
 
     @staticmethod
-    def get_similar_movies(title: str) -> dict:
+    def get_similar_movies(title: str, year: int) -> dict:
         response = requests.get(
-            url=f'http://127.0.0.1:8000/recommendation/{title}')
+            url=f'http://127.0.0.1:8000/recommendation/{title} ({year})')
         return response.json()
