@@ -1,9 +1,9 @@
 from aiogram import Router, F
 from aiogram.types import CallbackQuery, InlineKeyboardButton, InlineKeyboardMarkup
-
 from bot.services.movie_service import MovieService
 
 router = Router()
+
 
 @router.callback_query(F.data.startswith("similar-button"))
 async def similar_button_handler(callback: CallbackQuery):
@@ -18,4 +18,5 @@ async def similar_button_handler(callback: CallbackQuery):
 
 @router.callback_query(F.data.startswith("recommendation-chat-button"))
 async def similar_button_handler(callback: CallbackQuery):
-    await callback.bot.send_message(chat_id=callback.message.chat.id, text="Какой жанр фильмов вы предпочитаете?")
+    await callback.bot.send_message(chat_id=callback.message.chat.id, text="Please clarify your request\.")
+    await callback.answer()

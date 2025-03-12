@@ -38,6 +38,6 @@ async def handle_premiers(message: types.Message):
     await message.bot.delete_message(chat_id=message.chat.id, message_id=message.message_id)
 
 @router.message()
-async def handle_premiers(message: types.Message):
+async def handle_any_messages(message: types.Message):
     await message.bot.delete_message(chat_id=message.chat.id, message_id=message.message_id)
     

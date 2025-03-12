@@ -10,7 +10,7 @@ router = Router()
 
 @router.callback_query(F.data == 'premieres')
 async def handle_premiers_callback(callback: CallbackQuery):
-    await callback.bot.edit_message_media(media=InputMediaPhoto(media='https://cbx-prod.b-cdn.net/COLOURBOX65908436.jpg?width=800&height=800&quality=70', caption=markdown.bold("Премьеры за февраль 2025 года")), chat_id=callback.message.chat.id, message_id=callback.message.message_id, reply_markup=get_premiere_keyboard())
+    await callback.bot.edit_message_media(media=InputMediaPhoto(media='https://cbx-prod.b-cdn.net/COLOURBOX65908436.jpg?width=800&height=800&quality=70', caption=markdown.bold("Премьеры за март 2025 года")), chat_id=callback.message.chat.id, message_id=callback.message.message_id, reply_markup=get_premiere_keyboard())
     await callback.answer()
 
 @router.callback_query(F.data.startswith("premier-movie-button"))
