@@ -8,7 +8,6 @@ from bot.services.movie_service import MovieService
 from bot.config import Session
 
 router = Router()
-
 session = Session()
 
 @router.message(F.text == "🏠 На главную")
@@ -37,7 +36,13 @@ async def handle_premiers(message: types.Message):
     await message.bot.send_photo(chat_id=message.chat.id, photo=movie['posterUrl'], caption=get_movie_message(name=movie['nameRu'], year=movie['year'], genres=movie['genres'], rating=movie['ratingKinopoisk'], description=movie['description']), reply_markup=get_movie_keyboard(movie_id=movie_id, movie_title=movie['nameOriginal'], movie_year=movie['year']))
     await message.bot.delete_message(chat_id=message.chat.id, message_id=message.message_id)
 
+@router.message(F.text.startswith('* '))
+async def handle_any_messages(message: types.Message):
+    user_message = message.text.split(' ')[1]
+    result = MovieService.get_recommendation(user_message)
+    print(result)
+    await message.bot.send_message(chat_id=message.chat.id, text=message.text)
+
 @router.message()
 async def handle_any_messages(message: types.Message):
     await message.bot.delete_message(chat_id=message.chat.id, message_id=message.message_id)
-    

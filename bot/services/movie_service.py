@@ -42,3 +42,9 @@ class MovieService:
         response = requests.get(
             url=f'http://127.0.0.1:8000/recommendation/{title} ({year})')
         return response.json()
+
+    @staticmethod
+    def get_recommendation(message: str) -> dict:
+        response = requests.get(
+            url=f'http://127.0.0.1:8000/recommendation/message/{message}')
+        return response.json()
