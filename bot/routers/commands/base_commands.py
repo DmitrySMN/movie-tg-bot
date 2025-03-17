@@ -39,10 +39,8 @@ async def handle_premiers(message: types.Message):
 
 @router.message(F.text.startswith('*'))
 async def handle_any_messages(message: types.Message):
-    print(message.text)
     result = MovieService.get_recommendation(message.text)['result']
-    print(result)
-    await message.bot.send_message(chat_id=message.chat.id, text=result.replace('(', '\(').replace(')', '\)').replace('.', '\.').replace('-', '\-'))
+    await message.bot.send_message(chat_id=message.chat.id, text=result.replace('(', '\(').replace(')', '\)').replace('.', '\.').replace('-', '\-').replace('!', '\!'))
 
 @router.message()
 async def handle_any_messages(message: types.Message):

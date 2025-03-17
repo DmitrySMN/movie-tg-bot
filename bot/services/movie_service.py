@@ -44,7 +44,7 @@ class MovieService:
         return response.json()
 
     @staticmethod
-    def get_recommendation(message: str) -> dict:
-        response = requests.get(
+    async def get_recommendation(message: str) -> dict:
+        response = await requests.get(
             url=f'http://127.0.0.1:8000/recommendation/message/{message}')
         return response.json()
